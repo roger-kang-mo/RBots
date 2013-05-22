@@ -1,0 +1,65 @@
+#controls.form-horizontal {
+	margin-left: 10px;
+	width: 30%;
+	float: left;
+	overflow:scroll;
+}
+
+.panel-expand {
+	display:inline;
+	width: 20px;
+	height: 20px;
+	background:url(glyphicons-halflings.png) transparent;
+	background-position: -313px -119px;
+	float:right;
+	margin-top:15px;
+
+	&.open {
+		background-position: -288px -120px;
+	}
+}
+
+.hash-expand {
+	display:inline;
+	margin-top:3px;
+	margin-left: 135px;
+	position:absolute;
+	width: 20px;
+	height: 20px;
+	background:url(glyphicons-halflings.png) transparent;
+	background-position: -313px -119px;
+	float:right;
+
+	&.collapsed {
+		background-position: -288px -120px;
+	}
+}
+
+#output.form-horizontal {
+	width: 65%;
+	float: right;
+}
+
+.action-header {
+
+	background-color: #ccc;
+	padding: 0px 5px;
+
+	h3 {
+		width:60%;
+	}
+}
+
+.action-content {
+	display: none;
+
+	&.off {
+		display: none;
+	}
+
+	.content-submit {
+		float:right;
+	}
+	
+}
+

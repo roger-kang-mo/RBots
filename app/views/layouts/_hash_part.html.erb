@@ -1,0 +1,22 @@
+<li>
+	<% if val.class == Hash %>
+		<% if val.length > 1 %><span class="hash-expand"></span><% end %><a href='#_' class='ul-title tips' title="click to hide"><%= "#{key ? (key + ':') : ''}" %></a>{<ul>
+		<% val.each do |k, v| %>
+			<%= render :partial => '/layouts/hash_part', :locals => { :key => k, :val => v } %>
+		<% end %>
+		</ul>
+		}
+	<% elsif val.class == Array %>
+		<% if val.length > 1 %><span class="hash-expand"></span><% end %><a href='#_' class='ul-title tips' title="click to hide"><%= "#{key ? (key + ':') : ''}" %></a>[
+		<% if val.length > 0 %>
+			<ol>
+			<% val.each do |arr_part| %>
+				<%= render :partial => '/layouts/hash_part', :locals => { :key => nil, :val => arr_part } %>
+			<% end %>
+			</ol>
+		<% end %>
+		]
+	<% else %>
+		<%= "#{key ? (key + ':') : ''} #{val ? val : 'nil'}" %>
+	<% end %>
+</li>

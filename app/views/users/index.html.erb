@@ -1,0 +1,55 @@
+<% content_for :main do %>
+<br/>
+
+<div class="form-horizontal" id="controls">
+	<div class="action-header" id="about-user-header"><span class="panel-expand tips" title="click to expand"></span><h3 class="tips" title="Get general info about a user">Learn about user</h3></div>
+	<div class='clearfix action-content off' id='about-user'>
+		<input type="text" id="about-user-input" class="request-field" data-field="username" placeholder="username..."></input>
+		<button id="about-user-submit" class="content-submit" data-url="get_account_info">Submit</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+
+	<div class="action-header" id="reddit-login-header"><span class="panel-expand tips" title="click to expand"></span><h3>Log in to Reddit</h3></div>
+	<div class="clearfix action-content off" id="login-to-reddit">
+		<label for="reddit-username">Username: <input type="text" class="request-field" id="reddit-username" data-field="username" placeholder="username..."></input></label>
+		<label for="reddit-password">Password: <input type="password" class="request-field" id="reddit-password" data-field="password" placeholder="password..."></input></label>
+		<button id="reddit-login-submit" data-url='login_reddit' class="content-submit">Submit</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+
+	<div class="action-header" id="about-me-header"><span class="panel-expand tips" title="click to expand"></span><h3>About me</h3></div>
+	<div class="clearfix action-content off" id="about-me">
+		<button id="about-me-submit" data-url='about_me' class="content-submit">Submit Request</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+
+	<div class="action-header" id="show-subreddit-header"><span class="panel-expand tips" title="click to expand"></span><h3>Subreddits</h3></div>
+	<div class="clearfix action-content off" id="show-subreddit">
+		<label for="subreddit-name">Subreddit: <input type="text" class="request-field" id="subreddit-name" data-field="target" placeholder="subreddit name..."></label>
+		<label for="item-limit">Num items to show: <input type="number" class="request-field" id="item-limit" data-field="limit" placeholder="ex: 25"></label>
+		<button id="show-subreddit-submit" data-url="show_subreddit" class="content-submit">Show Subreddit</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+	<div class="action-header" id="get-user-comments-header"><span class="panel-expand tips" title="click to expand"></span><h3>Show User Comments</h3></div>
+	<div class="clearfix action-content off" id="get-user-comments">
+		<label for="username">Username: <input type="text" class="request-field" id="username-comments" data-field="username" placeholder="username..."></label>
+		<label for="item-limit">Num comments to show: <input type="number" class="request-field" id="item-limit" data-field="limit" placeholder="ex: 25"></label>
+		<button id="get-user-comments-submit" data-url="get_user_comments" class="content-submit">User Comments</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+	<div class="action-header" id="get-user-overview-header"><span class="panel-expand tips" title="click to expand"></span><h3>Show User Overview</h3></div>
+	<div class="clearfix action-content off" id="get-user-overview">
+		<label for="username">Username: <input type="text" class="request-field" id="username-overview" data-field="username" placeholder="username..."></label>
+		<button id="get-user-overview-submit" data-url="get_user_overview" class="content-submit">User Overview</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+	<div class="action-header" id="bulk-collect-data-header"><span class="panel-expand tips" title="click to expand"></span><h3>Collect Data From</h3></div>
+	<div class="clearfix action-content off" id="get-data-from">
+		<label for="bulk-users" class="tips" title="Enter a list of comma-separated usernames to collect data from.">Users: <textarea name="" id="bulk-users" cols="80" rows="5" type="text" class="request-field" data-field="usernames" placeholder="ex: user1, user2, user3"></textarea></label>
+		<label for="bulk-subreddits" class="tips" title="Enter a list of comma-separated subreddits to collect data from. No need for '/r'">Users: <textarea name="" id="bulk-subreddits" cols="80" rows="5" type="text" class="request-field" data-field="subreddits" placeholder="ex: pics, sloths, pyongyang"></textarea></label>
+		<button id="bulk-collect-data-submit" data-url="bulk_collect_user_data" class="content-submit">Collect Data</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>
+	</div>
+</div>
+
+<div class="form-horizontal" id="output">
+	
+</div>
+
+<script>
+	rbots.landing();
+</script>
+<% end %>

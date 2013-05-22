@@ -1,0 +1,22 @@
+<% data = response_data.class == HTTParty::Response ? response_data.parsed_response : response_data %>
+<% if data.class == Hash %>
+	<% if data.length > 1 %><span class="hash-expand"></span><% end %>{<ul class="elems" id="returned_data">
+	<% data.each do |k, v| %>
+		<%= render :partial => '/layouts/hash_part', :locals => { :key => k, :val => v } %>
+	<% end %>
+	</ul>
+	}
+<% elsif data.class == Array %> 
+	[
+	<% if data.length > 0 %>
+		<ul>
+		<% data.each do |arr_part| %>
+			<%= render :partial => '/layouts/hash_part', :locals => { :key => nil, :val => arr_part } %>
+		<% end %>
+		</ul>
+	<% end %>
+	]
+
+<% else %>
+	<%= data %>
+<% end %> 
