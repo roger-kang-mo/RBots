@@ -23,6 +23,10 @@ RBots::Application.routes.draw do
   get 'get_user_comments' => 'users#get_user_comments'
   get 'get_user_overview' => 'users#get_user_overview'
   get 'bulk_collect_user_data' => 'users#bulk_collect_user_data'
+  get 'bots/perform_search' => 'bots#perform_search'
+  post 'bots/create' => 'bots#create'
+  get 'bots/show_bots' => 'bots#show_bots'
+  
 
   # Example resource route with options:
   #   resources :products do

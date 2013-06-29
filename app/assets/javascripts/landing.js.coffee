@@ -2,6 +2,22 @@ rbots.landing = (args) ->
 
 	$(document).ready -> 
 		initTips()
+
+	$('.container-toggle').click ->
+		whichControls = $(this).data('which')
+		that = $("#" +whichControls)
+		theOther = $(".control-container:not(#" + that.attr('id') + ")")
+
+		if $(this).hasClass('off')	
+			that.slideDown()
+			theOther.slideUp()
+			theOther.children('.action-content').addClass('off').slideUp()
+		else
+			that.slideUp()
+			that.children('.action-content').addClass('off').slideUp()
+			theOther.slideDown()
+
+		$('.container-toggle').toggleClass('off')
 		
 	$('.action-header').click ->
 		attachedContent = $(this).next('.action-content')
@@ -29,13 +45,16 @@ rbots.landing = (args) ->
 			parentElem.children('ol, ul').children('li').slideUp()
 
 	$('.request-field').keyup (e) -> submitRequest(e) if e.which == 13
-	$('.content-submit').click (e) -> submitRequest(e)
+	# $('.content-submit').click (e) -> submitRequest(e)
+	$(document).on 'click', '.content-submit', (e) -> submitRequest(e)
 
 	submitRequest = (e) ->
 		parentPanel = $(e.target).parents('.action-content')
 		loader = $('.loader', parentPanel)
 		emptyField = false
 		ajaxUrl = $('.content-submit', parentPanel).data('url')
+		actionType = $('.content-submit', parentPanel).data('action-type') or 'GET'
+		console.log actionType
 		sendData = {}
 
 		fields = $('.request-field', parentPanel)
@@ -56,6 +75,7 @@ rbots.landing = (args) ->
 			loader.show()
 			$.ajax
 				url: ajaxUrl
+				type: actionType
 				data: sendData
 				complete: -> 
 					$('.loader:visible').hide()

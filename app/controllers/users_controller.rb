@@ -1,10 +1,12 @@
 require 'RedditAPI'
 require 'RedditAccount'
 require 'Helper'
+require 'bots/Bot'
 
 class UsersController < ApplicationController
 
   before_filter :check_logged_in, :only => [:about_me]
+  before_filter :get_bots, :only => [:index]
 
   def index
     respond_to do |format|
@@ -100,7 +102,6 @@ class UsersController < ApplicationController
   end
 
   def bulk_collect_user_data
-    
   
   end
 

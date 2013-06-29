@@ -1,16 +1,19 @@
 module Helper
 
-	def Helper.clean_attributes(class_type, attrs)
-		cleaned_attrs = attrs.dup
-		cleaned_attrs['remote_id'] = cleaned_attrs.delete('id')
+	def Helper.clean_attributes(attrs, params)
+		cleaned_params = params.dup
+		if cleaned_params['id']
+			cleaned_params['remote_id'] = cleaned_params.delete('id')
+		end
 
-		cleaned_attrs.each do |k, v|
-			unless class_type.column_names.include? k.to_s
-				cleaned_attrs.delete k
+		attrs_list = attrs.column_names if not attrs.is_a?(Array)
+		cleaned_params.each do |k, v|
+			unless attrs_list.include? k.to_s
+				cleaned_params.delete k
 			end
 		end
 
-		cleaned_attrs
+		cleaned_params
 	end
 
 	def Helper.clean_params(params)

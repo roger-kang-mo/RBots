@@ -1,0 +1,9 @@
+<select id="bots-select" data-field="bot_id">
+<% if @bots and @bots.length > 0 %>
+	<% @bots.each do |bot| %>
+		<option value="<%= bot.id %>"><%= bot.name %></option>
+	<% end %>
+<% end %>
+</select>
+
+<button class="content-submit" data-url="bots/set_bot">Set Bot</button> <img class="loader" src="/assets/loader.gif" style="display: none;"/>

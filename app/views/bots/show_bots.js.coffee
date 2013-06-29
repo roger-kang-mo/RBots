@@ -1,0 +1,1 @@
+$('#set-bot').html("<%= escape_javascript(render :partial => '/layouts/bots_list', :locals => { :bots => @bots }) %>")

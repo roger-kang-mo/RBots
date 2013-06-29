@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522010120) do
+ActiveRecord::Schema.define(:version => 20130603043926) do
+
+  create_table "bots", :force => true do |t|
+    t.string  "name"
+    t.string  "bot_type"
+    t.integer "post_count"
+    t.integer "message_count"
+    t.text    "description"
+    t.boolean "account_created"
+  end
 
   create_table "posts", :force => true do |t|
     t.string  "remote_id"

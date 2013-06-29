@@ -2,7 +2,7 @@
 	margin-left: 10px;
 	width: 30%;
 	float: left;
-	overflow:scroll;
+	overflow-y:scroll;
 }
 
 .panel-expand {
@@ -62,4 +62,23 @@
 	}
 	
 }
+
+.container-toggle {
+	padding-right: 10px;
+	text-decoration: underline;
+
+	&.off {
+		text-decoration: none;
+	}
+
+}
+
+.control-container {
+	
+	&.off {
+		display:none;
+	}
+}
+
+
 

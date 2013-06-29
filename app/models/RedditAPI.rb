@@ -52,6 +52,24 @@ class RedditAPI
 		user_data
 	end
 
+	def create_reddit_account(params)
+		reddit_account_attrs = ['name', 'email', 'passwd', 'passwd2']
+		account_data = Helper.clean_attributes(reddit_account_attrs, params)
+
+		account_data['user'] = account_data['name'].delete
+		account_data['api_type'] = 'json'
+		account_data['rem'] = 'true'
+
+
+
+		data_body = { :body => account_data}
+
+		response_data = HTTParty.post("#{BASE_URI}/api/register.json", data_body)
+
+		respnse_data	
+
+	end
+
 	def logout
 		self.modhash = nil
 		session[:modhash] = nil
@@ -91,5 +109,15 @@ class RedditAPI
 
 		subreddit_data = self.class.get("#{BASE_URI}/r/#{subreddit_name}.json", query_data)
 		subreddit_data
+	end
+
+	def get_comments(params)
+		attr_list = ['article', 'comment', 'context', 'depth', 'limit', 'sort']
+		data = Helper.clean_attributes(attr_list, params)
+
+		query_data = { :query => data }
+
+		comment_data = self.class.get("#{BASE_URI}/comments/.json", query_data)
+		comment_data
 	end
 end

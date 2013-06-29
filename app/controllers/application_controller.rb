@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def get_bots 
+		@bots = Bot.all
+	end
+
 end
